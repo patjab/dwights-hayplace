@@ -24,6 +24,11 @@ class Maze {
       const hayPatchObj = new HayPatch(hayPatch)
       const hayPatchDivEl = this.getElementAt(hayPatchObj.currentCoordinateRow, hayPatchObj.currentCoordinateCol)
       hayPatchDivEl.className += " " + "patchStyle"
+      const hayPic = document.createElement("IMG");
+      hayPic.setAttribute("src", "./media/hay.png");
+      hayPic.setAttribute("width", "70");
+      hayPic.setAttribute("height", "70");
+      hayPatchDivEl.append(hayPic)
     })
   }
 
@@ -31,8 +36,14 @@ class Maze {
     const playerEl = this.getElementAt(this.playersCurrentRow, this.playersCurrentCol)
     const playerDivEl = document.createElement("div")
     playerDivEl.setAttribute("id", "player")
-    const playerTextEl = document.createTextNode("DWIGHT")
-    playerDivEl.append(playerTextEl)
+    // const playerTextEl = document.createTextNode("DWIGHT")
+
+
+    const dwightPlayer = document.createElement("IMG");
+    dwightPlayer.setAttribute("src", "./media/dwight.jpg");
+    dwightPlayer.setAttribute("width", "100");
+    dwightPlayer.setAttribute("height", "100");
+    playerDivEl.append(dwightPlayer)
     playerEl.append(playerDivEl)
   }
 

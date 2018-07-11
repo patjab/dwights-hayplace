@@ -1,17 +1,19 @@
 .grid-container {
-  width: 50%;
-  height: 50%;
+  width: 1px;
+  height: 1px;
   display: grid;
-  grid-template-columns: repeat(6, auto);
+  grid-template-columns: repeat(6, minmax(8rem, 1fr));
+  grid-template-rows: repeat(6, minmax(8rem, 1fr));
 }
 
-.grid-item {
+/* .grid-item {
   border: 1px solid;
 
-}
+}  */
 
 .patchStyle {
-  background-color: grey;
+  /* background-color: yellow; */
   border: 5px;
   border-color: black;
+  text-align: center
 }

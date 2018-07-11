@@ -12,14 +12,14 @@ class MazeController {
         divSpotEl.setAttribute("class", "grid-item")
         divSpotEl.setAttribute("data-row", row)
         divSpotEl.setAttribute("data-col", col)
-        divSpotEl.innerHTML = `(${row}, ${col})`
-
+        // divSpotEl.innerHTML = `(${row}, ${col})`
 
         // if (somethingExistsAt({row: row, col: col})) {
         // divSpotEl.innerHTML = "HAYPATCH"
         // }
 
         gridContainerEl.appendChild(divSpotEl)
+
       }
     }
   }
