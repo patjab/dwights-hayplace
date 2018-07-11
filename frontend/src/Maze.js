@@ -3,6 +3,7 @@ class Maze {
     //this.sideLength = maze.sideLength // this is the length of one side of the square maze
     this.characters = maze.characters // from the has_many relationships that Maze has
     this.hayPatches = maze.hay_patches // from the has_many relationships that Maze has
+    this.size = maze.size
     this.playersCurrentRow = maze.players_current_row
     this.playersCurrentCol = maze.players_current_col
   }
@@ -27,15 +28,17 @@ class Maze {
     return document.querySelector(`[data-row='${row}'][data-col='${col}']`)
   }
 
-
   renderMaze() {
+    this.renderHayPatches()
+    this.renderPlayer()
+  }
+
+  renderHayPatches() {
     this.hayPatches.forEach((hayPatch) => {
       const hayPatchObj = new HayPatch(hayPatch)
       const hayPatchDivEl = this.getElementAt(hayPatchObj.currentCoordinateRow, hayPatchObj.currentCoordinateCol)
       hayPatchDivEl.className += " " + "patchStyle"
     })
-
-    this.renderPlayer()
   }
 
   renderPlayer() {
@@ -51,18 +54,39 @@ class Maze {
   // coordinate
   characterExistsAt(coordinate) {
 
+        return false
   }
 
   // Uses renderMazeAs2DArray to determine if a character exists at the given
   // coordinate
-  obstacleExistsAt(coordinate) {
-
+  hayPatchesCoordinateArray() {
+    return this.hayPatches.map((hayPatch)=>{
+      const hayPatchObj = new HayPatch(hayPatch)
+      return {row: hayPatchObj.currentCoordinateRow, col: hayPatchObj.currentCoordinateCol}
+    })
   }
 
   // Uses characterExistsAt(coordinate) and obstacleExistsAt(coordinate) to
   // determine if something exists at the given coordinate. Returns boolean
-  somethingExistsAt(coordinate) {
-    return false
+  somethingExistsAt(inputCoordinate) {
+    return !!this.hayPatchesCoordinateArray().find((coordinate) => {
+      return ((coordinate.row === inputCoordinate.row) && (coordinate.col === inputCoordinate.col))
+    })
+  }
+
+  fallOutOfMaze(inputCoordinate) {
+    return ((inputCoordinate.row < this.size) && (inputCoordinate.col < this.size))
+  }
+
+  nothingExistsAt(inputCoordinate) {
+    return !(this.hayPatchesCoordinateArray().find((coordinate) => {
+      return ((coordinate.row === inputCoordinate.row) && (coordinate.col === inputCoordinate.col))
+    }))
+  }
+
+  staysInMaze(inputCoordinate) {
+    return ((inputCoordinate.row >= 0) && (inputCoordinate.row < this.size)
+    && (inputCoordinate.col >= 0) && (inputCoordinate.col < this.size))
   }
 
   // Returns whatever exists at the given coordinate

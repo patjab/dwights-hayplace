@@ -18,7 +18,7 @@ document.addEventListener('DOMContentLoaded', () => {
       } else if ( e.key === "ArrowDown" ) {
         coordinate = {row: maze.playersCurrentRow+1, col: maze.playersCurrentCol}
       }
-      if (!maze.somethingExistsAt(coordinate)) {
+      if (maze.nothingExistsAt(coordinate) && maze.staysInMaze(coordinate)) {
         const oldPlayerPositionDivEl = document.querySelector("#player")
         oldPlayerPositionDivEl.parentNode.removeChild(oldPlayerPositionDivEl)
 
@@ -26,6 +26,8 @@ document.addEventListener('DOMContentLoaded', () => {
         maze.playersCurrentCol = coordinate.col
 
         maze.renderPlayer()
+      } else {
+        console.log("IDIOT")
       }
 
 
