@@ -66,18 +66,6 @@ class Maze {
     })
   }
 
-  // Uses characterExistsAt(coordinate) and obstacleExistsAt(coordinate) to
-  // determine if something exists at the given coordinate. Returns boolean
-  somethingExistsAt(inputCoordinate) {
-    return !!this.hayPatchesCoordinateArray().find((coordinate) => {
-      return ((coordinate.row === inputCoordinate.row) && (coordinate.col === inputCoordinate.col))
-    })
-  }
-
-  fallOutOfMaze(inputCoordinate) {
-    return ((inputCoordinate.row < this.size) && (inputCoordinate.col < this.size))
-  }
-
   nothingExistsAt(inputCoordinate) {
     return !(this.hayPatchesCoordinateArray().find((coordinate) => {
       return ((coordinate.row === inputCoordinate.row) && (coordinate.col === inputCoordinate.col))
@@ -105,11 +93,6 @@ class Maze {
     return unoccupiedPositions
   }
 
-  fillInMaze() {
-    // In each maze we require 1 player, 3 other characters, and obstacles
 
-    // Put HayPatches
-    //hayPatch = new HayPatch(currentCoordinate: {row: row, col: col})
-  }
 
 }

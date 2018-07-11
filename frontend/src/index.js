@@ -27,7 +27,11 @@ document.addEventListener('DOMContentLoaded', () => {
 
         maze.renderPlayer()
       } else {
-        console.log("IDIOT")
+        const soundEl = document.createElement("audio")
+        soundEl.src = "./media/idiot.mp3"
+        document.body.appendChild(soundEl)
+        soundEl.play()
+
       }
 
 
