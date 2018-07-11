@@ -1,6 +1,6 @@
 class Character {
   constructor(character) {
-    this.currentCoordinate = character.currentCoordinate
+    this.currentCoordinate = {row: character.current_coordinate_row, col: character.current_coordinate_col}
     this.maze = character.maze // from the belongs_to relationship Character has
   }
 

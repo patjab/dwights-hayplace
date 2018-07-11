@@ -2,10 +2,16 @@
   width: 50%;
   height: 50%;
   display: grid;
-  grid-template-columns: repeat(10, auto);
+  grid-template-columns: repeat(6, auto);
 }
 
 .grid-item {
   border: 1px solid;
 
+}
+
+.patchStyle {
+  background-color: grey;
+  border: 5px;
+  border-color: black;
 }
