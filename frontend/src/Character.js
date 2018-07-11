@@ -32,4 +32,6 @@ class Character {
   move(direction) {
 
   }
+
+  addToMaze
 }

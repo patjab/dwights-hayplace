@@ -3,6 +3,7 @@ class MazeController {
   // Interacts with the DOM in index.html to render the display representation
   // of the maze
   static renderMaze() {
+
     const gridContainerEl = document.querySelector(".grid-container")
 
     // Render the maze
@@ -12,11 +13,12 @@ class MazeController {
         divSpotEl.setAttribute("class", "grid-item")
         divSpotEl.setAttribute("data-row", row)
         divSpotEl.setAttribute("data-col", col)
+        divSpotEl.innerHTML = "----"
         // If somethingExists at the current row, col
+        // if (somethingExistsAt({row: row, col: col})) {
+        //
+        // }
 
-
-        // If !somethingExists athte current row, col
-        divSpotEl.innerHTML = "here"
         gridContainerEl.appendChild(divSpotEl)
       }
     }

@@ -1,0 +1,2 @@
+class HayPatch < ApplicationRecord
+end

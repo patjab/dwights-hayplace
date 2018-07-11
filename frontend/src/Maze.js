@@ -25,8 +25,25 @@ class Maze {
   }
 
   // Uses characterExistsAt(coordinate) and obstacleExistsAt(coordinate) to
-  // determine if something exists at the given coordinate
+  // determine if something exists at the given coordinate. Returns boolean
   somethingExistsAt(coordinate) {
     return characterExistsAt(coordinate) || obstacleExistsAt(coordinate)
   }
+
+  // Returns whatever exists at the given coordinate
+  componentAt(coordinate) {
+    return renderMazeAs2DArray()[row][col]
+  }
+
+  // Gets all the spots which are not occupied
+  allUnoccupiedPositions() {
+    const unoccupiedPositions = []
+    for (let row = 0; row < this.size; row++ ) {
+      for (let col = 0; col < this.size; col++ ) {
+        somethingExistsAt({row: row, col: col}) ? null: unoccupiedPositions.push({row: row, col: col})
+      }
+    }
+    return unoccupiedPositions
+  }
+
 }
