@@ -32,6 +32,8 @@ ActiveRecord::Schema.define(version: 2018_07_11_103022) do
     t.integer "size", default: 6
     t.integer "finished_time"
     t.integer "user_id"
+    t.integer "players_current_row", default: 3
+    t.integer "players_current_col", default: 0
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
   end

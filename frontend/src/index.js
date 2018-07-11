@@ -4,9 +4,40 @@ document.addEventListener('DOMContentLoaded', () => {
   MazeController.renderMaze()
   adapter.getMaze().then((data) => {
     const maze = new Maze(data)
-    maze.renderMazeAs2DArray()
-    maze.renderHayPatches()
+    maze.renderMaze()
+
+    document.addEventListener('keydown', (e) => {
+
+      let coordinate;
+      if ( e.key === "ArrowLeft" ) {
+        coordinate = {row: maze.playersCurrentRow, col: maze.playersCurrentCol-1}
+      } else if ( e.key === "ArrowRight" ) {
+        coordinate = {row: maze.playersCurrentRow, col: maze.playersCurrentCol+1}
+      } else if ( e.key === "ArrowUp" ) {
+        coordinate = {row: maze.playersCurrentRow-1, col: maze.playersCurrentCol}
+      } else if ( e.key === "ArrowDown" ) {
+        coordinate = {row: maze.playersCurrentRow+1, col: maze.playersCurrentCol}
+      }
+      if (!maze.somethingExistsAt(coordinate)) {
+        const oldPlayerPositionDivEl = document.querySelector("#player")
+        oldPlayerPositionDivEl.parentNode.removeChild(oldPlayerPositionDivEl)
+
+        maze.playersCurrentRow = coordinate.row
+        maze.playersCurrentCol = coordinate.col
+
+        maze.renderPlayer()
+      }
+
+
+      // console.log(e.key)
+
+    })
+
   })
+
+
+
+
 
   // .then((data) => {
   //   data.forEach((hayPatch)=>{

@@ -6,7 +6,7 @@ class Adapter {
 
   // HARDCODED
   getMaze() {
-    const baseURL = `http://localhost:3000/mazes/${3}`
+    const baseURL = `http://localhost:3000/mazes/${1}`
     return fetch(baseURL).then(r => r.json())
   }
 
