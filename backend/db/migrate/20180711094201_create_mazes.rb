@@ -8,6 +8,9 @@ class CreateMazes < ActiveRecord::Migration[5.2]
       t.integer :players_current_row, :default => 3
       t.integer :players_current_col, :default => 0
 
+      t.integer :maze_finish_row, :default => 3
+      t.integer :maze_finish_col, :default => 5
+
       t.timestamps
     end
   end

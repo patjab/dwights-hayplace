@@ -6,23 +6,9 @@ class Maze {
     this.size = maze.size
     this.playersCurrentRow = maze.players_current_row
     this.playersCurrentCol = maze.players_current_col
+    this.finishRow = maze.maze_finish_row
+    this.finishCol = maze.maze_finish_col
   }
-
-  // Goes through all the characters and the hayPatches in the given JSON and
-  // assembles a two dimensional array with references to characters and hayPatches
-  // inside the appropriate array slot
-  // renderMazeAsTwoDArray() {
-  //   const mazeArray = []
-  //   for (let i = 0; i < 6; i++) {
-  //     mazeArray.push(new Array(6))
-  //   }
-  //   this.hayPatches.forEach((hayPatch) => {
-  //     const currentHayPatch = new HayPatch(hayPatch)
-  //     mazeArray[currentHayPatch.currentCoordinateRow][currentHayPatch.currentCoordinateCol] = "hay patch here"
-  //   })
-  //
-  //   return mazeArray
-  // }
 
   getElementAt(row, col) {
     return document.querySelector(`[data-row='${row}'][data-col='${col}']`)
@@ -57,7 +43,6 @@ class Maze {
         return false
   }
 
-  // Uses renderMazeAs2DArray to determine if a character exists at the given
   // coordinate
   hayPatchesCoordinateArray() {
     return this.hayPatches.map((hayPatch)=>{
@@ -77,21 +62,18 @@ class Maze {
     && (inputCoordinate.col >= 0) && (inputCoordinate.col < this.size))
   }
 
-  // Returns whatever exists at the given coordinate
-  componentAt(coordinate) {
-    return renderMazeAs2DArray()[row][col]
+  playerFinish() {
+    if ((this.playersCurrentRow===this.finishRow) && (this.playersCurrentCol===this.finishCol)) {
+      document.querySelector('.grid-container').innerHTML = 'is Hay King'
+      const audioEl = document.querySelector('audio')
+      audioEl.parentNode.removeChild(audioEl)
+      const soundEl = document.createElement("audio")
+      soundEl.src = "./media/hayking.mp3"
+      document.body.appendChild(soundEl)
+      soundEl.play()
+    }
   }
 
-  // Gets all the spots which are not occupied
-  allUnoccupiedPositions() {
-    const unoccupiedPositions = []
-    for (let row = 0; row < this.size; row++ ) {
-      for (let col = 0; col < this.size; col++ ) {
-        somethingExistsAt({row: row, col: col}) ? null: unoccupiedPositions.push({row: row, col: col})
-      }
-    }
-    return unoccupiedPositions
-  }
 
 
 

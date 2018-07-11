@@ -25,7 +25,9 @@ document.addEventListener('DOMContentLoaded', () => {
         maze.playersCurrentRow = coordinate.row
         maze.playersCurrentCol = coordinate.col
 
+
         maze.renderPlayer()
+        maze.playerFinish()
       } else {
         const soundEl = document.createElement("audio")
         soundEl.src = "./media/idiot.mp3"
