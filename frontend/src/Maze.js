@@ -1,5 +1,6 @@
 class Maze {
   constructor(maze) {
+    this.id = maze.id
     this.characters = maze.characters // from the has_many relationships that Maze has
     this.hayPatches = maze.hay_patches // from the has_many relationships that Maze has
     this.size = maze.size
@@ -7,6 +8,7 @@ class Maze {
     this.playersCurrentCol = maze.players_current_col
     this.finishRow = maze.maze_finish_row
     this.finishCol = maze.maze_finish_col
+    this.finished_time = maze.finished_time
   }
 
   getElementAt(row, col) {
@@ -92,13 +94,23 @@ class Maze {
     if ((this.playersCurrentRow===this.finishRow) && (this.playersCurrentCol===this.finishCol)) {
       const endTime = Date.now()
       const duration = Math.floor((endTime - startTime)/1000)
+      const adapter = new Adapter()
+      adapter.createTime(this.id, duration)
+
+      document.body.style['background-image'] = 'url("./media/dwightPortrait.jpg")'
+      document.body.style['background-repeat'] = 'no-repeat'
+      document.body.style['background-size'] = 'cover'
+      const timerEl = document.querySelector('.timer')
+      timerEl.remove()
       document.querySelector('.grid-container').innerHTML = `<h1>Hay King in ${duration} seconds</h1>`
+
       const audioEl = document.querySelector('audio')
       audioEl.parentNode.removeChild(audioEl)
       const soundEl = document.createElement("audio")
       soundEl.src = "./media/hayking.mp3"
       document.body.appendChild(soundEl)
       soundEl.play()
+
     }
   }
 

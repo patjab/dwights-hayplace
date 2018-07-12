@@ -14,23 +14,28 @@ document.addEventListener('DOMContentLoaded', () => {
     const startTime = Date.now()
     let timeout = setTimeout(function() {}, 120 * 1000);
 
-    const timeAllowed = 5000
+    const timeAllowed = 120000
 
     setTimeout(() => {
-      const gridContainerEl = document.querySelector(".grid-container")
-      gridContainerEl.innerHTML = ""
-      const videoEl = document.createElement("video")
-      videoEl.setAttribute("width", "auto")
-      videoEl.setAttribute("height", "auto")
-      videoEl.setAttribute("id", "loserVideo")
-      videoEl.setAttribute("autoplay", "true")
+      adapter.getMaze(id).then((data) => {
+        console.log(data)
+        if (data.finished_time === null ) {
+          const gridContainerEl = document.querySelector(".grid-container")
+          gridContainerEl.innerHTML = ""
+          const videoEl = document.createElement("video")
+          videoEl.setAttribute("width", "auto")
+          videoEl.setAttribute("height", "auto")
+          videoEl.setAttribute("id", "loserVideo")
+          videoEl.setAttribute("autoplay", "true")
 
-      const sourceEl = document.createElement("source")
-      sourceEl.setAttribute("src", "media/loser.mp4")
-      sourceEl.setAttribute("id", "loserVideoSrc")
-      sourceEl.setAttribute("type", "video/mp4")
-      videoEl.appendChild(sourceEl)
-      gridContainerEl.appendChild(videoEl)
+          const sourceEl = document.createElement("source")
+          sourceEl.setAttribute("src", "media/loser.mp4")
+          sourceEl.setAttribute("id", "loserVideoSrc")
+          sourceEl.setAttribute("type", "video/mp4")
+          videoEl.appendChild(sourceEl)
+          gridContainerEl.appendChild(videoEl)
+        }
+      })
     }, timeAllowed);
 
     const timerEl = document.querySelector(".timer")

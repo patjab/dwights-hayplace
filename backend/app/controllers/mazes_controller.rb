@@ -10,8 +10,20 @@ class MazesController < ApplicationController
     render json: @maze
   end
 
+  def update
+    if @maze.update(maze_params)
+      render json: @maze
+    else
+      render json: @maze.errors, status: :unprocessable_entity
+    end
+  end
+
   private
   def set_maze
     @maze = Maze.find(params[:id])
+  end
+
+  def maze_params
+    params.require(:maze).permit(:finished_time)
   end
 end
