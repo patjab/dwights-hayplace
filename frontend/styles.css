@@ -1,6 +1,6 @@
 .grid-container {
-  width: 1px;
-  height: 1px;
+  /* width: 1px;
+  height: 1px; */
   display: grid;
   grid-template-columns: repeat(19, 5.26vw);
   grid-template-rows: repeat(19, 5.26vh);
@@ -9,6 +9,8 @@
 
 /* .grid-item {
   border: 1px solid;
+  overflow: hidden;  /* NEW */
+     /* NEW; needed for Firefox */
 
 }  */
 
@@ -16,7 +18,7 @@
   /* background-color: yellow; */
   border: 5px;
   border-color: black;
-  text-align: center
+  /* text-align: center */
 }
 
 video {

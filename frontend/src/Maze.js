@@ -40,8 +40,8 @@ class Maze {
       hayPatchDivEl.className += " " + "patchStyle"
       const hayPic = document.createElement("IMG");
       hayPic.setAttribute("src", "./media/hay.png");
-      hayPic.setAttribute("width", "70");
-      hayPic.setAttribute("height", "70");
+      hayPic.setAttribute("width", "100%");
+      hayPic.setAttribute("height", "100%");
       hayPatchDivEl.append(hayPic)
     })
   }
@@ -53,8 +53,8 @@ class Maze {
 
     const dwightPlayer = document.createElement("IMG");
     dwightPlayer.setAttribute("src", "./media/dwight.jpg");
-    dwightPlayer.setAttribute("width", "100");
-    dwightPlayer.setAttribute("height", "100");
+    dwightPlayer.setAttribute("width", "100%");
+    dwightPlayer.setAttribute("height", "100%");
     playerDivEl.append(dwightPlayer)
     playerEl.append(playerDivEl)
   }
