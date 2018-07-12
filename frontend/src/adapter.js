@@ -4,9 +4,8 @@ class Adapter {
     return fetch(baseURL).then(r => r.json())
   }
 
-  // HARDCODED
-  getMaze() {
-    const baseURL = `http://localhost:3000/mazes/${1}`
+  getMaze(id) {
+    const baseURL = `http://localhost:3000/mazes/${id}`
     return fetch(baseURL).then(r => r.json())
   }
 
@@ -14,4 +13,10 @@ class Adapter {
     const baseURL = `http://localhost:3000/users/${id}`
     return fetch(baseURL).then(r => r.json())
   }
+
+  getCharacters() {
+    const baseURL = `http://localhost:3000/characters/`
+    return fetch(baseURL).then(r => r.json())
+  }
+
 }

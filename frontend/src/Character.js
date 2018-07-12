@@ -1,37 +1,46 @@
 class Character {
   constructor(character) {
-    this.currentCoordinate = {row: character.current_coordinate_row, col: character.current_coordinate_col}
     this.maze = character.maze // from the belongs_to relationship Character has
+    // Initialized randomly, not from database
+    const randomPosition = this.maze.randomEmptyPosition()
+    this.currentCoordinateRow = randomPosition.row
+    this.currentCoordinateCol = randomPosition.col
   }
 
-  // This method accepts a coordinate object and checks if the move to that
-  // coordinate argument is possible from the currentCoordinate the character
-  // exists.
-  // RETURNS: boolean
-  // THINGS THAT MAY PREVENT MOVEMENT:
-  // - A position is not on the board
-  // - A position is already occupied by a character or an obstacle
-  canMoveTo(coordinate) {
+  move() {
 
+    let coordinate;
+    if ( Math.floor(Math.random()*2) == 0 ) {
+      coordinate = {row: this.currentCoordinateRow + Math.floor(Math.random()*3)-1,
+        col: this.currentCoordinateCol}
+    } else {
+      coordinate = {row: this.currentCoordinateRow,
+        col: this.currentCoordinateCol + Math.floor(Math.random()*3)-1}
+    }
+
+    if (this.maze.nothingExistsAt(coordinate) && this.maze.staysInMaze(coordinate)) {
+        const oldPlayerPositionDivEl = document.querySelector("#kevin")
+        oldPlayerPositionDivEl.parentNode.removeChild(oldPlayerPositionDivEl)
+
+        this.currentCoordinateRow = coordinate.row
+        this.currentCoordinateCol = coordinate.col
+
+        this.rerenderCharacter()
+      }
   }
 
-  // Uses canMoveTo(coordinate) to check if movement is possible in the north,
-  // south, east, west directions (up, down, right, left)
-  // Pushes the all of these possible movements to an array and returns that
-  // array (i.e. [{row: 0, col:-1}, {row:1, col:0}] indicates a movement of
-  // left and down, respectively, are available)
-  getAllPossibleMoves() {
-    {row: this.currentCoordinate.row+1, col: this.currentCoordinate.col}
-    {row: this.currentCoordinate.row, col: this.currentCoordinate.col+1}
-    {row: this.currentCoordinate.row+1, col: this.currentCoordinate.col}
-    {row: this.currentCoordinate.row, col: this.currentCoordinate.col+1}
+  rerenderCharacter() {
+    const kevinPositionEl = this.maze.getElementAt(this.currentCoordinateRow, this.currentCoordinateCol)
+
+    const divEl = document.createElement("div")
+    divEl.setAttribute("id", "kevin")
+
+    const kevinImg = document.createElement("IMG");
+    kevinImg.setAttribute("src", "./media/kevin.jpg");
+    kevinImg.setAttribute("width", "100");
+    kevinImg.setAttribute("height", "100");
+
+    divEl.appendChild(kevinImg)
+    kevinPositionEl.appendChild(divEl)
   }
-
-  // Checks if the movement exists in the getAllPossibleMoves() array and if it
-  // does, the coordinate of the character will change
-  move(direction) {
-
-  }
-
-  addToMaze
 }

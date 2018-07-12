@@ -1,13 +1,47 @@
 document.addEventListener('DOMContentLoaded', () => {
 
+  let id = 1;
+
   const adapter = new Adapter()
-  MazeController.renderMaze()
-  adapter.getMaze().then((data) => {
+
+  adapter.getMaze(id).then((data) => {
     const maze = new Maze(data)
+    MazeController.renderMaze(maze.size)
+
     maze.renderMaze()
+    CharacterController.renderKevin(maze)
+
+    const startTime = Date.now()
+    let timeout = setTimeout(function() {}, 120 * 1000);
+
+    const timeAllowed = 5000
+
+    setTimeout(() => {
+      const gridContainerEl = document.querySelector(".grid-container")
+      gridContainerEl.innerHTML = ""
+      const videoEl = document.createElement("video")
+      videoEl.setAttribute("width", "auto")
+      videoEl.setAttribute("height", "auto")
+      videoEl.setAttribute("id", "loserVideo")
+      videoEl.setAttribute("autoplay", "true")
+
+      const sourceEl = document.createElement("source")
+      sourceEl.setAttribute("src", "media/loser.mp4")
+      sourceEl.setAttribute("id", "loserVideoSrc")
+      sourceEl.setAttribute("type", "video/mp4")
+      videoEl.appendChild(sourceEl)
+      gridContainerEl.appendChild(videoEl)
+    }, timeAllowed);
+
+    const timerEl = document.querySelector(".timer")
+    setInterval(() => {
+      if (Math.floor((timeAllowed-(Date.now()-startTime))/1000) >= 0) {
+        timerEl.innerHTML = `<h1>${Math.floor((timeAllowed-(Date.now()-startTime))/1000)} second remain</h1>`
+      }
+    }, 500)
 
     document.addEventListener('keydown', (e) => {
-
+      e.preventDefault()
       let coordinate;
       if ( e.key === "ArrowLeft" ) {
         coordinate = {row: maze.playersCurrentRow, col: maze.playersCurrentCol-1}
@@ -25,9 +59,8 @@ document.addEventListener('DOMContentLoaded', () => {
         maze.playersCurrentRow = coordinate.row
         maze.playersCurrentCol = coordinate.col
 
-
         maze.renderPlayer()
-        maze.playerFinish()
+        maze.playerFinish(startTime)
       } else {
         const soundEl = document.createElement("audio")
         soundEl.src = "./media/idiot.mp3"
@@ -35,39 +68,7 @@ document.addEventListener('DOMContentLoaded', () => {
         soundEl.play()
 
       }
-
-
-      // console.log(e.key)
-
     })
 
   })
-
-
-
-
-
-  // .then((data) => {
-  //   data.forEach((hayPatch)=>{
-  //     new HayPatch(hayPatch)
-  //   })
-  //   HayPatch.getAll().forEach((hayPatch) => {
-  //     const hayPatchDivEl = document.querySelector(`[data-row='${hayPatch.currentCoordinateRow}'][data-col='${hayPatch.currentCoordinateCol}']`)
-  //     hayPatchDivEl.className += " " + "patchStyle"
-  //   })
-  // })
-
-
-
-  // // For listening to up, down, left, right
-  // document.addEventListener('keypress', (e) => {
-  //   // if left
-  //   //  move left
-  //   // if right
-  //   //  move right
-  //   // if up
-  //   //  move up
-  //   // if down
-  //   //  move down
-  // })
 })

@@ -29,13 +29,13 @@ ActiveRecord::Schema.define(version: 2018_07_11_103022) do
   end
 
   create_table "mazes", force: :cascade do |t|
-    t.integer "size", default: 6
+    t.integer "size", default: 51
     t.integer "finished_time"
     t.integer "user_id"
-    t.integer "players_current_row", default: 3
+    t.integer "players_current_row", default: 25
     t.integer "players_current_col", default: 0
-    t.integer "maze_finish_row", default: 3
-    t.integer "maze_finish_col", default: 5
+    t.integer "maze_finish_row", default: 25
+    t.integer "maze_finish_col", default: 50
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
   end

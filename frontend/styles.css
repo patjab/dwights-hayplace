@@ -2,8 +2,9 @@
   width: 1px;
   height: 1px;
   display: grid;
-  grid-template-columns: repeat(6, minmax(8rem, 1fr));
-  grid-template-rows: repeat(6, minmax(8rem, 1fr));
+  grid-template-columns: repeat(19, 5.26vw);
+  grid-template-rows: repeat(19, 5.26vh);
+  /* minmax(8rem, 1fr) */
 }
 
 /* .grid-item {
