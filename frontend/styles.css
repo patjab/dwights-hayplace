@@ -1,13 +1,21 @@
 .grid-container {
-  width: 1px;
-  height: 1px;
+  /* width: 1px;
+  height: 1px; */
   display: grid;
-  grid-template-columns: repeat(6, minmax(8rem, 1fr));
-  grid-template-rows: repeat(6, minmax(8rem, 1fr));
+  min-width: 0;
+  min-height: 0;
+  grid-template-columns: repeat(6, 16vw);
+  grid-template-rows: repeat(6, 16vh);
+  /* grid-auto-columns: 400px;
+  grid-auto-rows: 400px; */
+
+
 }
 
 /* .grid-item {
   border: 1px solid;
+  overflow: hidden;  /* NEW */
+     /* NEW; needed for Firefox */
 
 }  */
 
@@ -15,5 +23,5 @@
   /* background-color: yellow; */
   border: 5px;
   border-color: black;
-  text-align: center
+  /* text-align: center */
 }
