@@ -37,8 +37,8 @@ class Character {
 
     const kevinImg = document.createElement("IMG");
     kevinImg.setAttribute("src", "./media/kevin.jpg");
-    kevinImg.setAttribute("width", "100");
-    kevinImg.setAttribute("height", "100");
+    kevinImg.setAttribute("width", "60%");
+    kevinImg.setAttribute("height", "60%");
 
     divEl.appendChild(kevinImg)
     kevinPositionEl.appendChild(divEl)

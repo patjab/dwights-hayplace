@@ -1,6 +1,6 @@
 document.addEventListener('DOMContentLoaded', () => {
 
-  let id = 1;
+  let id = 7;
 
   const adapter = new Adapter()
 
@@ -14,7 +14,7 @@ document.addEventListener('DOMContentLoaded', () => {
     const startTime = Date.now()
     let timeout = setTimeout(function() {}, 120 * 1000);
 
-    const timeAllowed = 120000
+    const timeAllowed = 30000
 
     setTimeout(() => {
       adapter.getMaze(id).then((data) => {
@@ -41,7 +41,7 @@ document.addEventListener('DOMContentLoaded', () => {
     const timerEl = document.querySelector(".timer")
     setInterval(() => {
       if (Math.floor((timeAllowed-(Date.now()-startTime))/1000) >= 0) {
-        timerEl.innerHTML = `<h1>${Math.floor((timeAllowed-(Date.now()-startTime))/1000)} second remain</h1>`
+        timerEl.innerHTML = `<h1 class='time-font'>${Math.floor((timeAllowed-(Date.now()-startTime))/1000)} second(s) remain</h1>`
       }
     }, 500)
 

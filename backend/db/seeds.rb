@@ -25,6 +25,6 @@ hard_hay_patches.each do |coordinate|
   HayPatch.create(current_coordinate_row: coordinate[0], current_coordinate_col: coordinate[1], maze: hard_maze)
 end
 
-Character.create(maze: integer)
+Character.create(maze: easy_maze)
 
 puts "Successfully seeded data"

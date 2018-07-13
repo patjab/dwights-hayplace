@@ -53,8 +53,8 @@ class Maze {
 
     const dwightPlayer = document.createElement("IMG");
     dwightPlayer.setAttribute("src", "./media/dwight.jpg");
-    dwightPlayer.setAttribute("width", "100%");
-    dwightPlayer.setAttribute("height", "100%");
+    dwightPlayer.setAttribute("width", "70%");
+    dwightPlayer.setAttribute("height", "70%");
     playerDivEl.append(dwightPlayer)
     playerEl.append(playerDivEl)
   }
@@ -65,8 +65,8 @@ class Maze {
     const dundieImgEl = document.createElement("IMG");
     dundieImgEl.setAttribute("id", "dundie");
     dundieImgEl.setAttribute("src", "./media/dundie.jpg");
-    dundieImgEl.setAttribute("width", "100");
-    dundieImgEl.setAttribute("height", "100");
+    dundieImgEl.setAttribute("width", "80%");
+    dundieImgEl.setAttribute("height", "70%");
     finishEl.append(dundieImgEl)
   }
 
@@ -102,7 +102,11 @@ class Maze {
       document.body.style['background-size'] = 'cover'
       const timerEl = document.querySelector('.timer')
       timerEl.remove()
-      document.querySelector('.grid-container').innerHTML = `<h1>Hay King in ${duration} seconds</h1>`
+      const gridContainer = document.querySelector('.grid-container')
+      gridContainer.classList.toggle('grid-container')
+      gridContainer.innerHTML = `<h1 class='winner-font'>I am your Hay King <br> Accomplished in ${duration}s</h1>`
+
+
 
       const audioEl = document.querySelector('audio')
       audioEl.parentNode.removeChild(audioEl)
