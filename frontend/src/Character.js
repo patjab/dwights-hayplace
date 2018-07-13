@@ -1,7 +1,7 @@
 class Character {
   constructor(character) {
     this.maze = character.maze // from the belongs_to relationship Character has
-    
+
     // Initialized randomly, not from database
     const randomPosition = this.maze.randomEmptyPosition()
     this.currentCoordinateRow = randomPosition.row
@@ -38,8 +38,8 @@ class Character {
 
     const kevinImg = document.createElement("IMG");
     kevinImg.setAttribute("src", "./media/kevin.jpg");
-    kevinImg.setAttribute("width", "70");
-    kevinImg.setAttribute("height", "70");
+    kevinImg.setAttribute("width", "60%");
+    kevinImg.setAttribute("height", "60%");
 
     divEl.appendChild(kevinImg)
     kevinPositionEl.appendChild(divEl)
