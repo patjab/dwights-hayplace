@@ -8,6 +8,15 @@ const HayPatch = (function() {
       all.push(this)
     }
 
+    renderHayPatch(hayPatchDivEl) {
+      hayPatchDivEl.className += " " + "patchStyle"
+      const hayPic = document.createElement("IMG");
+      hayPic.setAttribute("src", "./media/hay.png");
+      hayPic.setAttribute("width", "70");
+      hayPic.setAttribute("height", "70");
+      hayPatchDivEl.append(hayPic)
+    }
+
     static getAll() {
       return [...all]
     }

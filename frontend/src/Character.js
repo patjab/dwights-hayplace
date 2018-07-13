@@ -1,6 +1,7 @@
 class Character {
   constructor(character) {
     this.maze = character.maze // from the belongs_to relationship Character has
+    
     // Initialized randomly, not from database
     const randomPosition = this.maze.randomEmptyPosition()
     this.currentCoordinateRow = randomPosition.row

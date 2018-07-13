@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2018_07_11_103022) do
+ActiveRecord::Schema.define(version: 2018_07_13_035648) do
 
   create_table "characters", force: :cascade do |t|
     t.integer "current_coordinate_row"
@@ -28,14 +28,23 @@ ActiveRecord::Schema.define(version: 2018_07_11_103022) do
     t.datetime "updated_at", null: false
   end
 
-  create_table "mazes", force: :cascade do |t|
-    t.integer "size", default: 51
-    t.integer "finished_time"
+  create_table "maze_users", force: :cascade do |t|
     t.integer "user_id"
-    t.integer "players_current_row", default: 25
-    t.integer "players_current_col", default: 0
-    t.integer "maze_finish_row", default: 25
-    t.integer "maze_finish_col", default: 50
+    t.integer "maze_id"
+    t.integer "finished_time"
+    t.integer "players_current_row"
+    t.integer "players_current_col"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
+
+  create_table "mazes", force: :cascade do |t|
+    t.integer "size"
+    t.string "difficulty"
+    t.integer "maze_finish_row"
+    t.integer "maze_finish_col"
+    t.integer "initial_row"
+    t.integer "initial_col"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
   end
