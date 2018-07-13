@@ -26,7 +26,11 @@ class Adapter {
       headers: {
         'Content-Type': 'application/json'
       },
-      body: JSON.stringify({finished_time: duration})
+      body: JSON.stringify({
+        maze: {
+          finished_time: duration
+        }
+      })
     }
     return fetch(baseURL, options).then(r => r.json())
   }

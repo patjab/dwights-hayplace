@@ -1,5 +1,5 @@
 class MazesController < ApplicationController
-  before_action :set_maze, only: [:show]
+  before_action :set_maze, only: [:show, :update]
 
   def index
     @mazes = Maze.all
@@ -24,6 +24,6 @@ class MazesController < ApplicationController
   end
 
   def maze_params
-    params.require(:maze).permit(:finished_time)
+    params.require(:maze).permit(:id, :finished_time)
   end
 end

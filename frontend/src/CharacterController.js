@@ -1,15 +1,4 @@
 class CharacterController {
-
-  // const adapter = new Adapter()
-
-  // renderAllMazeCharacter() {
-  //   adapter.getCharacters().forEach((character) => {
-  //     const currentCharacter = new Character(character)
-  //     console.log(currentCharacter)
-  //   })
-  // }
-
-  // Hardcoded
   static renderKevin(maze) {
     const kevin = new Character({maze: maze})
     const kevinPositionEl = maze.getElementAt(kevin.currentCoordinateRow, kevin.currentCoordinateCol)
@@ -19,8 +8,8 @@ class CharacterController {
 
     const kevinImg = document.createElement("IMG");
     kevinImg.setAttribute("src", "./media/kevin.jpg");
-    kevinImg.setAttribute("width", "100");
-    kevinImg.setAttribute("height", "100");
+    kevinImg.setAttribute("width", "70");
+    kevinImg.setAttribute("height", "70");
 
     divEl.appendChild(kevinImg)
     kevinPositionEl.appendChild(divEl)

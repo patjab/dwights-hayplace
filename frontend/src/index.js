@@ -14,11 +14,10 @@ document.addEventListener('DOMContentLoaded', () => {
     const startTime = Date.now()
     let timeout = setTimeout(function() {}, 120 * 1000);
 
-    const timeAllowed = 120000
+    const timeAllowed = 30000
 
     setTimeout(() => {
       adapter.getMaze(id).then((data) => {
-        console.log(data)
         if (data.finished_time === null ) {
           const gridContainerEl = document.querySelector(".grid-container")
           gridContainerEl.innerHTML = ""
